@@ -1,19 +1,19 @@
 export default {
 	fetch(request) {
-		if(request.url == "https://hello-world.cfelten.workers.dev") {
-			return new Response('Hello worker!', {
-				headers: {
-					'content-type': 'text/plain',
-				},
-		
-			});
-		}		
-		else{
-			return new Response('Error Worker!', {
-				headers: {
-					'content-type': 'text/plain',
-				}
-			});
-		}
-	},
-};
+	  if (request.method == 'POST') {
+		  var obj = {"Request_Method"  : request.method}
+		  var jsn = JSON.stringify(obj)
+		  return new Response(jsn, {
+		  headers: {
+			"content-type": "application/json"
+		  }
+		});
+	  } else {
+		return new Response("This is not a POST, it is a " + request.method + "...", {
+		  headers: {
+			"content-type": "text/plain"
+		  }
+		});
+	  }
+	}
+  };
