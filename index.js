@@ -1,11 +1,15 @@
 export default {
 	fetch(request) {
-	  if (request.method == 'POST') {
-		  var obj = {"Request_Method"  : request.method}
-		  var jsn = JSON.stringify(obj)
-		  return new Response(jsn, {
+		const data = {
+			"Request_Method"  : request.method,
+		};
+		
+		const json = JSON.stringify(data, null, 2)
+
+		if (request.method == 'POST') {
+		  return new Response(json, {
 		  headers: {
-			"content-type": "application/json"
+			"content-type": "application/json;charset=UTF-8",
 		  }
 		});
 	  } else {
