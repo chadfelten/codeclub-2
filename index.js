@@ -17,7 +17,7 @@ export default {
 
 		return new Response(response_libary[random_int] + " worker!", {
 		  headers: {
-			"content-type": "application/json;charset=UTF-8",
+			"content-type": "text/plain",
 		  }
 		});
 	}
