@@ -1,23 +1,24 @@
 export default {
 	fetch(request) {
-		const data = {
-			"Request_Method"  : request.method,
+		const response_libary = {
+			1: "hello",
+			2: "hola",
+			3: "guten tag",
+			4: "bonjour"
 		};
 		
-		const json = JSON.stringify(data, null, 2)
+		function getRandomInt(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min) + min);
+		  }
+		
+		const random_int = getRandomInt(1, 5);
 
-		if (request.method == 'POST') {
-		  return new Response(json, {
+		return new Response(response_libary[random_int] + " worker!", {
 		  headers: {
 			"content-type": "application/json;charset=UTF-8",
 		  }
 		});
-	  } else {
-		return new Response("This is not a POST, it is a " + request.method + "...", {
-		  headers: {
-			"content-type": "text/plain"
-		  }
-		});
-	  }
 	}
-  };
+}
